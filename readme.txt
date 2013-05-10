@@ -11,6 +11,16 @@ To use all the Vim plugins, add these lines to your $HOME/.vimrc.
   filetype plugin indent on
   syntax on
 
+Alternatively, using Vundle (available @ github.com/gmarik/vundle), add the 
+following to your .vimrc:
+  
+  syntax on  
+  Bundle `jnwhiteh/vim-golang`
+
+and then run:
+
+  :BundleInstall
+
 If you want to select fewer plugins, use the instructions in the rest of
 this file.
 
