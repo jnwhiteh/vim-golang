@@ -16,11 +16,15 @@ if exists("b:did_ftplugin_go_fmt")
     finish
 endif
 
+if !exists('g:go_fmt_cmd')
+    let g:go_fmt_cmd = 'gofmt'
+endif
+
 command! -buffer Fmt call s:GoFormat()
 
 function! s:GoFormat()
     let view = winsaveview()
-    silent %!gofmt
+    silent execute "%!" . g:go_fmt_cmd
     if v:shell_error
         let errors = []
         for line in getline(1, line('$'))
