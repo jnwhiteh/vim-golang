@@ -40,7 +40,11 @@ endif
 
 function! s:GoFormat()
     let view = winsaveview()
-    silent execute "%!" . g:gofmt_command
+    if exists("g:gofmt_flags")
+        silent execute "%!" . g:gofmt_command . " " . g:gofmt_flags
+    else
+        silent execute "%!" . g:gofmt_command
+    endif
     if v:shell_error
         let errors = []
         for line in getline(1, line('$'))
